@@ -37,11 +37,28 @@ for(const file of htmlFiles){
 for(const f of files.filter(x=>x.endsWith('.json'))){try{JSON.parse(fs.readFileSync(f,'utf8'))}catch(e){errors.push(`${path.relative(root,f)}: JSON invalide ${e.message}`)}}
 for(const f of files.filter(x=>x.endsWith('.xml'))){const x=fs.readFileSync(f,'utf8');if(!/^<\?xml/.test(x)||!/<(urlset|sitemapindex)\b/.test(x))errors.push(`${path.relative(root,f)}: XML de sitemap invalide`) }
 const report=JSON.parse(fs.readFileSync(path.join(root,'seo-report.json'),'utf8'));
-if(report.totalUrls!==120)errors.push(`Total URL ${report.totalUrls}, attendu 120`);
+const expectedTotalUrls=122;
+if(report.totalUrls!==expectedTotalUrls)errors.push(`Total URL ${report.totalUrls}, attendu ${expectedTotalUrls}`);
 if(report.minWords<800||report.maxWords>1500)errors.push(`Longueur visible hors plage: ${report.minWords}-${report.maxWords}`);
 const sitemapLocs=files.filter(x=>/sitemap-.*\.xml$/.test(x)).flatMap(f=>[...fs.readFileSync(f,'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]));
-if(new Set(sitemapLocs).size!==120)errors.push(`Sitemaps: ${new Set(sitemapLocs).size} URL uniques, attendu 120`);
-for(const required of ['robots.txt','ads.txt','sitemap.xml','sitemap-guides.xml','sitemap-forex.xml','sitemap-actions.xml','sitemap-metaux.xml','sitemap-etf.xml','sitemap-indices.xml'])if(!fs.existsSync(path.join(root,required)))errors.push(`${required} absent`);
+if(new Set(sitemapLocs).size!==expectedTotalUrls)errors.push(`Sitemaps: ${new Set(sitemapLocs).size} URL uniques, attendu ${expectedTotalUrls}`);
+for(const required of ['robots.txt','ads.txt','sitemap.xml','sitemap-guides.xml','sitemap-forex.xml','sitemap-actions.xml','sitemap-metaux.xml','sitemap-etf.xml','sitemap-indices.xml','manifest.webmanifest','icon.svg','sw.js'])if(!fs.existsSync(path.join(root,required)))errors.push(`${required} absent`);
+
+const knownRoutes=new Set(htmlFiles.map(file=>{
+  const rel=path.relative(root,file).replaceAll('\\','/');
+  return rel==='index.html'?'/':`/${rel.replace(/\/index\.html$/,'')}`;
+}));
+const knownFiles=new Set(files.map(file=>`/${path.relative(root,file).replaceAll('\\','/')}`));
+for(const file of htmlFiles){
+  const h=fs.readFileSync(file,'utf8');
+  const rel=path.relative(root,file).replaceAll('\\','/');
+  for(const match of h.matchAll(/(?:href|src)=["']([^"'#?]+)["']/g)){
+    const raw=match[1];
+    if(!raw.startsWith('/')||raw.startsWith('//'))continue;
+    const target=raw.replace(/\/$/,'')||'/';
+    if(!knownRoutes.has(target)&&!knownFiles.has(target))errors.push(`${rel}: cible interne absente ${raw}`);
+  }
+}
 
 const result={htmlFiles:htmlFiles.length,uniqueTitles:titles.size,uniqueDescriptions:descs.size,uniqueCanonicals:canonicals.size,sitemapUrls:new Set(sitemapLocs).size,minWords:report.minWords,maxWords:report.maxWords,errors};
 console.log(JSON.stringify(result,null,2));

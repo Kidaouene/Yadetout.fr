@@ -114,6 +114,8 @@ accumulation|Identifier une accumulation|GUIDE|lecture d une phase durant laquel
 distribution|Identifier une distribution|GUIDE|analyse d une phase de cession progressive après une hausse ou près d une résistance|volumes, supports et gestion du risque
 supports-resistances|Supports et résistances|GUIDE|repérage des zones où l équilibre entre acheteurs et vendeurs s est déjà déplacé|breakout, pullback et tendances
 volumes|Analyser les volumes|GUIDE|interprétation de la participation et validation des mouvements de prix|accumulation, distribution et breakout
+analyse-fondamentale|Analyse fondamentale|GUIDE|étude structurée des données économiques, financières et sectorielles qui influencent la valeur d un actif|sources, valorisation et gestion du risque
+saisonnalite|Comprendre la saisonnalité|GUIDE|analyse des comportements récurrents liés aux calendriers de production, de consommation et de publication|matières premières, volatilité et gestion du risque
 breakout|Analyser un breakout|GUIDE|évaluation d une sortie de zone avec confirmation par la clôture, la volatilité et les volumes|supports, volumes et pullback
 pullback|Comprendre le pullback|GUIDE|lecture d un retour du prix vers une zone franchie avant une éventuelle reprise|breakout, tendances et gestion du risque
 rsi|Utiliser le RSI|GUIDE|mesure du momentum et interprétation prudente des zones extrêmes et divergences|MACD, tendances et volatilité
@@ -254,7 +256,7 @@ for(const [g,items] of Object.entries(grouped))fs.writeFileSync(path.join(root,`
 fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\nDisallow: /parametres\nDisallow: /alertes\nSitemap: ${origin}/sitemap.xml\n`);
 if(!fs.existsSync(path.join(root,'ads.txt')))fs.writeFileSync(path.join(root,'ads.txt'),`google.com, ${publisher}, DIRECT, f08c47fec0942fa0\n`);
 
-const expected=119;
+const expected=121;
 if(outputs.length!==expected)throw new Error(`Nombre de pages SEO inattendu: ${outputs.length}, attendu ${expected}`);
 const short=outputs.filter(x=>x.words<800);
 const duplicateHashes=new Map();
