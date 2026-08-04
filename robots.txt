@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /parametres
+Disallow: /alertes
+Sitemap: https://www.yadetout.fr/sitemap.xml
