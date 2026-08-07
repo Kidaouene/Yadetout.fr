@@ -1,18 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
   <title id="title">Logo Yadetout</title>
-  <desc id="description">Courbe de marché ascendante cyan, violette et orange sur fond bleu nuit.</desc>
+  <desc id="description">Un Y stylisé comme une trajectoire de marché ascendante.</desc>
   <defs>
-    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#07101b"/>
-      <stop offset="1" stop-color="#10243a"/>
+    <linearGradient id="leftArm" x1="112" y1="148" x2="252" y2="292" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08bfe8"/>
+      <stop offset="1" stop-color="#7467e8"/>
     </linearGradient>
-    <linearGradient id="trend" x1="0" y1="1" x2="1" y2="0">
-      <stop stop-color="#37d8ff"/>
-      <stop offset="0.55" stop-color="#9d75ff"/>
-      <stop offset="1" stop-color="#ffad55"/>
+    <linearGradient id="rightArm" x1="252" y1="292" x2="400" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7467e8"/>
+      <stop offset="1" stop-color="#f28a34"/>
     </linearGradient>
+    <linearGradient id="stem" x1="252" y1="292" x2="252" y2="402" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7467e8"/>
+      <stop offset="1" stop-color="#162a45"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#10233d" flood-opacity=".18"/>
+    </filter>
   </defs>
-  <rect x="16" y="16" width="480" height="480" rx="128" fill="url(#background)" stroke="#31506f" stroke-width="16"/>
-  <path d="M92 354 196 218 276 290 420 104" fill="none" stroke="url(#trend)" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="420" cy="104" r="24" fill="#ffad55"/>
+  <rect x="24" y="24" width="464" height="464" rx="136" fill="#f7fbff" stroke="#c8d9e8" stroke-width="12" filter="url(#softShadow)"/>
+  <path d="M112 148 252 292" fill="none" stroke="url(#leftArm)" stroke-width="54" stroke-linecap="round"/>
+  <path d="M252 292 400 112" fill="none" stroke="url(#rightArm)" stroke-width="54" stroke-linecap="round"/>
+  <path d="M252 292v110" fill="none" stroke="url(#stem)" stroke-width="54" stroke-linecap="round"/>
+  <circle cx="112" cy="148" r="17" fill="#08bfe8"/>
 </svg>

@@ -42,7 +42,7 @@ if(report.totalUrls!==expectedTotalUrls)errors.push(`Total URL ${report.totalUrl
 if(report.minWords<800||report.maxWords>1500)errors.push(`Longueur visible hors plage: ${report.minWords}-${report.maxWords}`);
 const sitemapLocs=files.filter(x=>/sitemap-.*\.xml$/.test(x)).flatMap(f=>[...fs.readFileSync(f,'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]));
 if(new Set(sitemapLocs).size!==expectedTotalUrls)errors.push(`Sitemaps: ${new Set(sitemapLocs).size} URL uniques, attendu ${expectedTotalUrls}`);
-for(const required of ['robots.txt','ads.txt','sitemap.xml','sitemap-guides.xml','sitemap-forex.xml','sitemap-actions.xml','sitemap-metaux.xml','sitemap-etf.xml','sitemap-indices.xml','manifest.webmanifest','icon.svg','sw.js'])if(!fs.existsSync(path.join(root,required)))errors.push(`${required} absent`);
+for(const required of ['robots.txt','ads.txt','sitemap.xml','sitemap-guides.xml','sitemap-forex.xml','sitemap-actions.xml','sitemap-metaux.xml','sitemap-etf.xml','sitemap-indices.xml','manifest.webmanifest','logo.svg','logo-512.png','og-yadetout.png','icon.svg','icon-192.png','favicon-48.png','favicon.ico','apple-touch-icon.png','sw.js'])if(!fs.existsSync(path.join(root,required)))errors.push(`${required} absent`);
 
 const knownRoutes=new Set(htmlFiles.map(file=>{
   const rel=path.relative(root,file).replaceAll('\\','/');
