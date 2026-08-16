@@ -1,0 +1,10 @@
+{
+  "name": "Yadetout Market Watch",
+  "short_name": "Yadetout",
+  "description": "Analyses techniques pédagogiques multi-marchés",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07101b",
+  "theme_color": "#0a0f1c",
+  "icons": [{"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
