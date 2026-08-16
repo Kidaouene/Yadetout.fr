@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {"source":"/a-propos.html","destination":"/a-propos","permanent":true},
+    {"source":"/confidentialite.html","destination":"/confidentialite","permanent":true},
+    {"source":"/contact.html","destination":"/contact","permanent":true},
+    {"source":"/mentions-legales.html","destination":"/mentions-legales","permanent":true},
+    {"source":"/methodologie.html","destination":"/methodologie","permanent":true}
+  ],
+  "headers": [
+    {"source":"/(.*)","headers":[
+      {"key":"X-Content-Type-Options","value":"nosniff"},
+      {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
+      {"key":"Permissions-Policy","value":"camera=(), microphone=(), geolocation=()"}
+    ]}
+  ]
+}

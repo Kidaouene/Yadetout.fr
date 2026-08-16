@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.yadetout.fr/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.yadetout.fr/methodologie.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.yadetout.fr/a-propos.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.yadetout.fr/confidentialite.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://www.yadetout.fr/mentions-legales.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://www.yadetout.fr/contact.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://www.yadetout.fr/sitemap-forex.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-actions.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-metaux.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-matieres.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-energie.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-etf.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-indices.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-guides.xml</loc></sitemap>
+  <sitemap><loc>https://www.yadetout.fr/sitemap-trust.xml</loc></sitemap>
+</sitemapindex>
